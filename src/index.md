@@ -1,5 +1,6 @@
 # Viz Components
 
-This is the home page of your new Observable Framework app.
+This is me making myself a playground for brc-related visualization work.
 
-For more, see <https://observablehq.com/framework/getting-started>.
+When i figure out how these things actually get deployed and where the code should actually live, 
+this repo may die or become something else.
