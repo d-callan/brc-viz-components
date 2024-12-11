@@ -1,4 +1,5 @@
 import * as d3 from "npm:d3";
+import * as tol from "npm:hyphy-framework-test/src/color-maps/tol.js";
 
 function getNodeId(d) {
     return(d);
@@ -70,12 +71,26 @@ function findLinkY2(d, x, innerHeight, tallestColumnSize) {
     return(y2);
 }
 
+/**
+ * Extracts unique values from the 'value' property of each object in the given data array.
+ * 
+ * @param {Array<Object>} data - An array of objects, each containing a 'value' property.
+ * @return {Array<string>} - An array of unique values extracted from the 'value' property of the objects.
+ */
 function getUniqueLinkValues(data) {
     return [...new Set(data.map(d => d.value))];
 }
 
+/**
+ * Return an array of colors, one for each category in the given list of unique categories.
+ * If there are more unique categories than colors in the color map, throw an error.
+ * If there are fewer unique categories than colors in the color map, return only the first n colors.
+ * @param {Array<string>} uniqueCategories - list of unique categories
+ * @return {Array<string>} - array of colors, one for each category
+ */
 function getColorMap(uniqueCategories) {
-    var colorMap = ["#CC6677", "#332288", "#DDCC77", "#117733", "#88CCEE", "#882255", "#44AA99", "#999933", "#AA4499"];
+    //var colorMap = ["#CC6677", "#332288", "#DDCC77", "#117733", "#88CCEE", "#882255", "#44AA99", "#999933", "#AA4499"];
+    var colorMap = tol.muted.splice(0, 9);
 
     if (uniqueCategories.length > colorMap.length) {
         throw new Error(`There are more unique categories (${uniqueCategories.length}) than colors in the color map (${colorMap.length}).`);
