@@ -103,6 +103,12 @@ function getColorMap(uniqueCategories) {
     return colorMap;
 }
 
+ * @return {string} - Hex color code for the label, "#ffffff" (white) for dark mode and "#000000" (black) for light mode.
+function getLabelColor() {
+    var labelColor = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? "#ffffff" : "#000000";
+    return(labelColor);
+}
+
 // TODO links.value should be optional
 // TODO this should be refactored so it can be used for other vizs, ex a correlation network (see https://github.com/microbiomeDB/corGraph)
 /**
@@ -152,7 +158,7 @@ export function render(x, el, width = 1000, height = 4000) {
         .attr('y', 9)
         .attr('dy', '.35em')
         .attr('text-anchor', 'end')
-        .attr('fill', 'white')
+        .attr('fill', getLabelColor())
         .text(d => d);
 
     // Links
@@ -182,14 +188,14 @@ export function render(x, el, width = 1000, height = 4000) {
         .attr('r', 5)
         .attr('cx', d => findNodeCX(d, true, innerWidth))
         .attr('cy', (d,i) => findNodeCY(d, i, innerHeight, tallestColumnSize))
-        .style('fill', 'white')
+        .style('fill', getLabelColor())
         .style('stroke', 'black');
 
     sources  
         .append('text')
         .attr('x', d => findNodeLabelX(d, true, innerWidth))
         .attr('y', (d,i) => findNodeCY(d, i, innerHeight, tallestColumnSize))
-        .attr('fill', 'white')
+        .attr('fill', getLabelColor())
         .text(d => getNodeId(d));
 
     let targets =
@@ -205,14 +211,14 @@ export function render(x, el, width = 1000, height = 4000) {
         .attr('r', 5)
         .attr('cx', d => findNodeCX(d, false, innerWidth))
         .attr('cy', (d,i) => findNodeCY(d, i, innerHeight, shortestColumnSize))
-        .style('fill', 'white')
+        .style('fill', getLabelColor())
         .style('stroke', 'black');
 
     targets
         .append('text')
         .attr('x', d => findNodeLabelX(d, false, innerWidth)) 
         .attr('y', (d,i) => findNodeCY(d, i, innerHeight, shortestColumnSize))
-        .attr('fill', 'white')
+        .attr('fill', getLabelColor())
         .text(d => getNodeId(d));
 
     return svg.node();
