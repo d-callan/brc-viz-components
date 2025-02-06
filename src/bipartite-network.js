@@ -103,7 +103,11 @@ function getColorMap(uniqueCategories) {
     return colorMap;
 }
 
- * @return {string} - Hex color code for the label, "#ffffff" (white) for dark mode and "#000000" (black) for light mode.
+/**
+ * Return a color for the labels based on the user's preferred color scheme.
+ * If the user prefers a dark color scheme, return white; otherwise, return black.
+ * @return {string} - hex code for the label color
+ */
 function getLabelColor() {
     var labelColor = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? "#ffffff" : "#000000";
     return(labelColor);
