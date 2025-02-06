@@ -1,5 +1,5 @@
 import * as d3 from "npm:d3";
-import * as tol from "npm:hyphy-framework-test/src/color-maps/tol.js";
+import * as tol from "npm:hyphy-framework-test";
 
 function getNodeId(d) {
     return(d);
