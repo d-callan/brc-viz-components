@@ -1,5 +1,4 @@
 ```js
-import * as bpnet from "./bipartite-network.js";
 import * as forcenet from "./force-bp-net.js";
 ```
 
