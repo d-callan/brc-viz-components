@@ -18,12 +18,6 @@ showing the median number of variants within a gene matching that selected effec
 histogram can be interacted with to filter the network to, for example, only include genes
 with a large or small number of variants matching the effect category.
 
-This could probably be pretty significantly improved by incorporating sample metadata,
-context about genes.
-
-Ideally, once a gene of potential interest was identified wed show more detailed info,
-maybe even the little heatmap-style browser of Anton's.
-
 <br>
 
 ```js
@@ -151,3 +145,28 @@ const force_net = forcenet.render(brushed_variant_data, document.createElement("
 ```
 
 <div>${force_net}</div>
+
+## Follow-up Thoughts
+
+This could probably be pretty significantly improved by incorporating sample metadata,
+context about genes.
+
+Ideally, once a gene of potential interest was identified wed show more detailed info,
+maybe even the little heatmap-style browser of Anton's.
+
+Pros:
+1. presenting summary info means we pass less data to the browser, which is a big deal
+considering theres GBs of data..
+2. helps ppl find genes, which is probably the unit they most care about most of
+the time
+3. highlights that some genes see a lot of variation, and others not, and lets ppl
+filter by this
+4. the network being force directed makes it easy to see when genes follow very different 
+patterns of variation across samples
+
+Cons:
+1. obviously presenting data this summarized/ aggregated makes it harder for ppl to know
+what theyre looking at, increases our burden to explain
+2. showing more than a handful of genes + samples gets messy pretty quickly. there are 
+some combinations where i dont have a good way to filter/ avoid this yet (small # non-syn)
+3. probably other things, but im horribly biased in my own favor lol
