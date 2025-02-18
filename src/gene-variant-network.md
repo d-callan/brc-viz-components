@@ -11,9 +11,10 @@ not super helpful in identifying potential high-level patterns. Here we go..
 
 ## Force directed
 
-This is similar data to columnar but summarized to genes, edges have stroke width set to 
-median allele frequency across all variants within the gene for that particular sample.
-The idea is that you would first select an 'effect' type of interest, and get a histogram
+This is similar data to columnar but summarized to genes, by finding the total number of
+all variants for each effect class across all bases within a gene. here,edges have stroke 
+width set to median allele frequency across all variants within the gene for that particular 
+sample. The idea is that you would first select an 'effect' type of interest, and get a histogram
 showing the median number of variants within a gene matching that selected effect. This
 histogram can be interacted with to filter the network to, for example, only include genes
 with a large or small number of variants matching the effect category.
