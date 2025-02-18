@@ -1,6 +1,6 @@
 ```js
 import * as bpnet from "./bipartite-network.js";
-
+import * as forcenet from "./force-bp-net.js";
 ```
 
 # Variants as a Bipartite Network
@@ -8,6 +8,10 @@ import * as bpnet from "./bipartite-network.js";
 This is me exploring whether a bipartite network is useful for visualizing variants.
 I generally feel most things ive seen previously were kind of visually overwhelming and
 not super helpful in identifying potential high-level patterns. Here we go..
+
+## Columnar
+
+position is first column, sample is second. edges colored by variant effect iirc.
 
 ```js
 const pos_start = 1;
@@ -31,8 +35,7 @@ const filtered_variant_data = {
     column2NodeIds: variant_data[first_chromosome].column2NodeIds,
     links: filteredLinks
 }
-console.log(variant_data[first_chromosome])
-console.log(filtered_variant_data)
+
 const bpnet_svg = bpnet.render(filtered_variant_data, document.createElement("div"))
 ```
 
